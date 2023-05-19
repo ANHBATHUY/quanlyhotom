@@ -12,8 +12,8 @@ B4: gõ trên url là Cmd <br />
 B5: git clone https://github.com/ANHBATHUY/quanlyhotom.git <br />
 B6: enter + chờ code lưu về  <br />
 B7: Vào vscode mở code ,ròi tiếp bước dưới  <br />
-B8: Vào terminal, <b>gõ npm install</b>
-b9: gõ npm install
+B8: Vào terminal, <b>gõ npm install</b>  <br />
+b9: gõ npm install 
 
 
 ### `npm start`
