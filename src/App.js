@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import GaugeChart from 'react-gauge-chart'
-import {getDatabase, off, onValue, ref } from 'firebase/database';
+import { getDatabase, off, onValue, ref } from 'firebase/database';
 import { initializeApp } from "firebase/app";
 
 
@@ -48,6 +48,10 @@ function App() {
 
   return (
     <div className="App">
+      {/* cảnh báo khẩn cấp */}
+      <div className="urgent">
+      </div>
+      {/* -- end cảnh báo khẩn cấp-- */}
       <div className='header'>
         <div className="logo"><img className="logo" src="/logo.jpeg" alt="" /></div>
         <div className="title"><h1>HỆ THỐNG GIÁM SÁT HỒ NUÔI TÔM SỬ DỤNG IOT</h1></div>
@@ -118,10 +122,10 @@ function App() {
 
             <GaugeChart id="gauge-chart3"
 
-              percent={nhietdo/100}
+              percent={nhietdo / 100}
               formatTextValue={(value) => nhietdo}
             />
-             <h2 className='title-thongso'>NHIỆT ĐỘ (<sup> &#176;</sup>C)</h2>
+            <h2 className='title-thongso'>NHIỆT ĐỘ (<sup> &#176;</sup>C)</h2>
           </div>
           <div className='thongso'>
 
@@ -129,10 +133,10 @@ function App() {
               nrOfLevels={30}
               arcsLength={[0.3, 0.5, 0.2]}
               colors={['#EA4228', '#F5CD19', '#5BE12C']}
-              percent={oxy/10}
+              percent={oxy / 10}
               formatTextValue={() => oxy}
             />
-             <h2 className='title-thongso'>ĐỘ OXY (<span> ml/L</span>)</h2>
+            <h2 className='title-thongso'>ĐỘ OXY (<span> ml/L</span>)</h2>
 
           </div>
           <div className='thongso'>
@@ -141,18 +145,18 @@ function App() {
               nrOfLevels={420}
               arcsLength={[0.4, 0.4, 0.2]}
               colors={['#EA4228', '#F5CD19', '#5BE12C']}
-              percent={khoangcach/300}
+              percent={khoangcach / 300}
               arcPadding={0.02}
               formatTextValue={() => khoangcach}
             />
-             <h2 className='title-thongso'>MỨC NƯỚC (<span> cm</span>)</h2>
+            <h2 className='title-thongso'>MỨC NƯỚC (<span> cm</span>)</h2>
 
-          </div>
           </div>
         </div>
-
       </div>
-      );
+
+    </div>
+  );
 }
 
-      export default App;
+export default App;
