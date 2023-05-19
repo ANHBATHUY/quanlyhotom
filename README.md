@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 B1: Download GIt : https://git-scm.com/downloads
-/n
+\n
 B2: Cài đặt + reset máy
 B3: Tìm đên nơi cần lưu code
 B4: gõ trên Cmd
