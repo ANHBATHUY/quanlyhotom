@@ -208,6 +208,7 @@ function App() {
           {/* <div className="logo mobile"><img className="logo" src="/logo.jpeg" alt="" /></div> */}
           {/* <div className="logo mobile"><img className="logo" src="/logo2.jpg" alt="" /></div> */}
           <div className='header'>
+            <div className='logo-not-connect'><img src="/no-internet.jpg" alt="" /></div>
             <div className="logo"><img className="logo" src="/logo.jpeg" alt="" /></div>
             <div className="title"><h1>HỆ THỐNG GIÁM SÁT HỒ NUÔI TÔM <span>SỬ DỤNG IOT</span> </h1></div>
             <div className="logo"><img className="logo" src="/logo2.jpg" alt="" /></div>
