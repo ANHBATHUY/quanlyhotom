@@ -75,6 +75,7 @@
 }
 .message{
   margin-top: 50px;
+  width: auto;
 }
 .body{
   display: flex;
@@ -166,16 +167,18 @@
  }
  .action{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   gap: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
  }
  button.learn-more {
   font-weight: 600;
   color: #382b22;
   text-transform: uppercase;
   padding: 1.25em 2em;
-  background: #fff0f0;
+  background: #baadad;
   border: 2px solid #b18597;
   border-radius: 0.75em;
   -webkit-transform-style: preserve-3d;
@@ -207,7 +210,12 @@
   -webkit-transform: translate(0, 0.25em);
   transform: translate(0, 0.25em);
  }
- 
+ button.learn-more.active {
+  background: #fff;
+  -webkit-transform: translate(0, 0.25em);
+  transform: translate(0, 0.25em);
+ }
+
  button.learn-more:hover::before {
   -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
   box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #e03c3c;
@@ -233,8 +241,9 @@
   gap: 20px;
   flex-wrap: wrap;
   /* padding: 30px; */
-  padding-left: 30px;
   height: auto;
+  justify-content: center;
+  
 }
 .thongso{
   height: 200px;
@@ -265,4 +274,166 @@ box-shadow:  5px 5px 10px #cccccc,
   align-items: center;
   line-height: 20px;
   text-transform: uppercase;
+}
+.action.mobile{
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  /* CSS styles áp dụng cho màn hình có độ rộng tối đa 767px */
+  
+  .App{
+    width: 100%;
+    background-color: #f1f7f3;
+  }
+  .header .logo{
+    display: none;
+  }
+  .header{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: none;
+  }
+  .header .title{
+    font-size: 2.8vw;
+    width: 100%;
+  }
+  .header .title span{
+    display: none;
+  }
+  .body{
+    display: block;
+    height: auto;
+
+  }
+  .sidebar{
+    background: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+  }
+  .title-sidebar{
+    display: none;
+  }
+  .survivalmode{
+    margin-top: 0;
+  }
+  .survivalmode h2{
+    display: none;
+  }
+  .action-grounp{
+    display: none;
+  }
+  .content{
+    width: 100%;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background: none;
+    /* background: #c6c2c2; */
+  }
+  .title-content{
+    display: none;
+  }
+  .action.mobile{
+    display: block;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  .thongso{
+    display: block;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* CSS styles áp dụng cho màn hình có độ rộng từ 768px đến 1023px */
+  .App{
+    width: 100%;
+    background-color: #f1f7f3;
+  }
+  .header .logo{
+    display: none;
+  }
+  .header{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: none;
+  }
+  .header .title{
+    font-size: 2.8vw;
+    width: 100%;
+  }
+  .header .title span{
+    display: none;
+  }
+  .body{
+    display: block;
+    height: auto;
+
+  }
+  .sidebar{
+    background: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+  }
+  .title-sidebar{
+    display: none;
+  }
+  .survivalmode{
+    margin-top: 0;
+  }
+  .survivalmode h2{
+    display: none;
+  }
+  .action-grounp{
+    display: none;
+  }
+  .content{
+    width: 100%;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background: none;
+    /* background: #c6c2c2; */
+  }
+  .title-content{
+    display: none;
+  }
+  .action.mobile{
+    display: block;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  .thongso{
+    display: block;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* CSS styles áp dụng cho màn hình có độ rộng tối thiểu 1024px */
+  
 }
