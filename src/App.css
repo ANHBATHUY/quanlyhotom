@@ -284,9 +284,22 @@ box-shadow:  5px 5px 10px #cccccc,
 .action.mobile{
   display: none;
 }
+.not-internet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 @media only screen and (max-width: 767px) {
   /* CSS styles áp dụng cho màn hình có độ rộng tối đa 767px */
   
+  .not-internet img{
+    width: 100%;
+  }
   .App{
     width: 100%;
     background-color: #f1f7f3;
@@ -367,6 +380,9 @@ box-shadow:  5px 5px 10px #cccccc,
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* CSS styles áp dụng cho màn hình có độ rộng từ 768px đến 1023px */
+  .not-internet img{
+    width: 100%;
+  }
   .App{
     width: 100%;
     background-color: #f1f7f3;

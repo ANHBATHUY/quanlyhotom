@@ -35,10 +35,29 @@ function App() {
   const [shouldRotate, setShouldRotate] = useState(true);
   const [thucong, setThuCong] = useState(0);
   // thiết bị
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [device1, setDevice1] = useState(0);
   const [device2, setDevice2] = useState(0);
   const [device3, setDevice3] = useState(0);
   const [device4, setDevice4] = useState(0);
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+    };
+
+    const handleOffline = () => {
+      setIsOnline(false);
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
   useEffect(() => {
     const dbRef = ref(database, "/SmartHub");
     onValue(dbRef, (snapshot) => {
@@ -169,148 +188,159 @@ function App() {
   }
 
   return (
-    <div className="App"
-    >
 
-      {/* cảnh báo khẩn cấp */}
-      {thucong === 2 && <div className="urgent">
+    <>
+
+      {isOnline === false && <div className="not-internet">
+        <img src="/no-internet.jpg" alt="" />
+
       </div>}
-      {/* -- end cảnh báo khẩn cấp-- */}
-      {/* <div className="logo mobile"><img className="logo" src="/logo.jpeg" alt="" /></div> */}
-      {/* <div className="logo mobile"><img className="logo" src="/logo2.jpg" alt="" /></div> */}
-      <div className='header'>
-        <div className="logo"><img className="logo" src="/logo.jpeg" alt="" /></div>
-        <div className="title"><h1>HỆ THỐNG GIÁM SÁT HỒ NUÔI TÔM <span>SỬ DỤNG IOT</span> </h1></div>
-        <div className="logo"><img className="logo" src="/logo2.jpg" alt="" /></div>
-      </div>
-      <div className="body">
-        <div className="sidebar">
-          <h2 className='title-sidebar'>Bảng điều khiển</h2>
-          <div className="survivalmode">
-            {/* <h2>Chế độ</h2> */}
-            <button className={`learn-more ${thucong === 1 ? 'active' : 'inactive'}`} onClick={() => { handleCLickTuDong() }}> Tự đông
-            </button>
-            <button className={`learn-more ${thucong === 0 ? 'active' : 'inactive'}`} onClick={() => { handleCLickThuCong() }}> Thủ công
-            </button>
+
+      {
+        isOnline === true &&
+        <div className="App"
+        >
+
+          {/* cảnh báo khẩn cấp */}
+          {thucong === 2 && <div className="urgent">
+          </div>}
+          {/* -- end cảnh báo khẩn cấp-- */}
+          {/* <div className="logo mobile"><img className="logo" src="/logo.jpeg" alt="" /></div> */}
+          {/* <div className="logo mobile"><img className="logo" src="/logo2.jpg" alt="" /></div> */}
+          <div className='header'>
+            <div className="logo"><img className="logo" src="/logo.jpeg" alt="" /></div>
+            <div className="title"><h1>HỆ THỐNG GIÁM SÁT HỒ NUÔI TÔM <span>SỬ DỤNG IOT</span> </h1></div>
+            <div className="logo"><img className="logo" src="/logo2.jpg" alt="" /></div>
           </div>
+          <div className="body">
+            <div className="sidebar">
+              <h2 className='title-sidebar'>Bảng điều khiển</h2>
+              <div className="survivalmode">
+                {/* <h2>Chế độ</h2> */}
+                <button className={`learn-more ${thucong === 1 ? 'active' : 'inactive'}`} onClick={() => { handleCLickTuDong() }}> Tự đông
+                </button>
+                <button className={`learn-more ${thucong === 0 ? 'active' : 'inactive'}`} onClick={() => { handleCLickThuCong() }}> Thủ công
+                </button>
+              </div>
 
-          {thucong === 1 &&
-            // eslint-disable-next-line
-            <marquee className="message" scrollamount="12"><h3> Hệ thống hiện đang ở chế độ tự động...</h3></marquee>}
-          {thucong !== 1 &&
-            <div className='action-grounp'>
+              {thucong === 1 &&
+                // eslint-disable-next-line
+                <marquee className="message" scrollamount="12"><h3> Hệ thống hiện đang ở chế độ tự động...</h3></marquee>}
+              {thucong !== 1 &&
+                <div className='action-grounp'>
 
-              <div className="action">
-                <h2>Máy PH:</h2>
-                <label className="button" htmlFor="toggle">
-                  <input id="toggle" type="checkbox" onChange={handleDevice1} checked={device1 === 1} />
-                  <span className="slider"></span>
-                </label>
+                  <div className="action">
+                    <h2>Máy PH:</h2>
+                    <label className="button" htmlFor="toggle">
+                      <input id="toggle" type="checkbox" onChange={handleDevice1} checked={device1 === 1} />
+                      <span className="slider"></span>
+                    </label>
+                  </div>
+                  <div className="action">
+                    <h2>Máy nhiệt độ:</h2>
+                    <label className="button" htmlFor="toggle1">
+                      <input id="toggle1" type="checkbox" onChange={handleDevice2} checked={device2 === 1} />
+                      <span className="slider"></span>
+                    </label>
+                  </div>
+                  <div className="action">
+                    <h2>Máy OXY:</h2>
+                    <label className="button" htmlFor="toggle2">
+                      <input id="toggle2" type="checkbox" onChange={handleDevice3} checked={device3 === 1} />
+                      <span className="slider"></span>
+                    </label>
+                  </div>
+                  <div className="action">
+                    <h2>Máy đo mực nước:</h2>
+                    <label className="button" htmlFor="toggle3">
+                      <input id="toggle3" type="checkbox" onChange={handleDevice4} checked={device4 === 1} />
+                      <span className="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              }
+            </div>
+            <div className="content">
+              <h2 className='title-content'>Bảng thông số</h2>
+              {/* ph */}
+              <div className='thongso'>
+                <GaugeChart id="gauge-chart2"
+                  animate={shouldRotate}
+                  nrOfLevels={15}
+                  percent={ph / 14}
+                  // textColor="red"
+                  needleColor="#BEBEBE"
+                  // hideText
+                  formatTextValue={() => ph}
+                />
+                <h2 className='title-thongso'>ĐỘ PH</h2>
+                {thucong === 0 && <div className="action mobile">
+                  <label className="button" htmlFor="toggle">
+                    <input id="toggle" type="checkbox" onChange={handleDevice1} checked={device1 === 1} />
+                    <span className="slider"></span>
+                  </label>
+                </div>}
               </div>
-              <div className="action">
-                <h2>Máy nhiệt độ:</h2>
-                <label className="button" htmlFor="toggle1">
-                  <input id="toggle1" type="checkbox" onChange={handleDevice2} checked={device2 === 1} />
-                  <span className="slider"></span>
-                </label>
+
+              <div className='thongso'>
+
+                <GaugeChart id="gauge-chart3"
+                  animate={shouldRotate}
+                  percent={nhietdo / 100}
+                  formatTextValue={(value) => nhietdo}
+                />
+                <h2 className='title-thongso'>NHIỆT ĐỘ (<sup> &#176;</sup>C)</h2>
+                {thucong === 0 && <div className="action mobile">
+                  <label className="button" htmlFor="toggle1">
+                    <input id="toggle1" type="checkbox" onChange={handleDevice2} checked={device2 === 1} />
+                    <span className="slider"></span>
+                  </label>
+                </div>}
               </div>
-              <div className="action">
-                <h2>Máy OXY:</h2>
-                <label className="button" htmlFor="toggle2">
-                  <input id="toggle2" type="checkbox" onChange={handleDevice3} checked={device3 === 1} />
-                  <span className="slider"></span>
-                </label>
+              <div className='thongso'>
+
+                <GaugeChart id="gauge-chart5"
+                  animate={shouldRotate}
+                  nrOfLevels={30}
+                  arcsLength={[0.3, 0.5, 0.2]}
+                  colors={['#EA4228', '#F5CD19', '#5BE12C']}
+                  percent={oxy / 10}
+                  formatTextValue={() => oxy}
+                />
+                <h2 className='title-thongso'>ĐỘ OXY (<span> ml/L</span>)</h2>
+                {thucong === 0 && <div className="action mobile">
+                  <label className="button" htmlFor="toggle2">
+                    <input id="toggle2" type="checkbox" onChange={handleDevice3} checked={device3 === 1} />
+                    <span className="slider"></span>
+                  </label>
+                </div>}
+
               </div>
-              <div className="action">
-                <h2>Máy đo mực nước:</h2>
-                <label className="button" htmlFor="toggle3">
-                  <input id="toggle3" type="checkbox" onChange={handleDevice4} checked={device4 === 1} />
-                  <span className="slider"></span>
-                </label>
+              <div className='thongso'>
+
+                <GaugeChart id="gauge-chart5"
+                  animate={shouldRotate}
+                  nrOfLevels={420}
+                  arcsLength={[0.4, 0.4, 0.2]}
+                  colors={['#EA4228', '#F5CD19', '#5BE12C']}
+                  percent={khoangcach / 300}
+                  arcPadding={0.02}
+                  formatTextValue={() => khoangcach}
+                />
+                <h2 className='title-thongso'>MỨC NƯỚC (<span> cm</span>)</h2>
+                {thucong === 0 && <div className="action mobile">
+                  <label className="button" htmlFor="toggle3">
+                    <input id="toggle3" type="checkbox" onChange={handleDevice4} checked={device4 === 1} />
+                    <span className="slider"></span>
+                  </label>
+                </div>}
+
               </div>
             </div>
-          }
-        </div>
-        <div className="content">
-          <h2 className='title-content'>Bảng thông số</h2>
-          {/* ph */}
-          <div className='thongso'>
-            <GaugeChart id="gauge-chart2"
-              animate={shouldRotate}
-              nrOfLevels={15}
-              percent={ph / 14}
-              // textColor="red"
-              needleColor="#BEBEBE"
-              // hideText
-              formatTextValue={() => ph}
-            />
-            <h2 className='title-thongso'>ĐỘ PH</h2>
-            {thucong === 0 && <div className="action mobile">
-              <label className="button" htmlFor="toggle">
-                <input id="toggle" type="checkbox" onChange={handleDevice1} checked={device1 === 1} />
-                <span className="slider"></span>
-              </label>
-            </div>}
           </div>
 
-          <div className='thongso'>
-
-            <GaugeChart id="gauge-chart3"
-              animate={shouldRotate}
-              percent={nhietdo / 100}
-              formatTextValue={(value) => nhietdo}
-            />
-            <h2 className='title-thongso'>NHIỆT ĐỘ (<sup> &#176;</sup>C)</h2>
-            {thucong === 0 && <div className="action mobile">
-              <label className="button" htmlFor="toggle1">
-                <input id="toggle1" type="checkbox" onChange={handleDevice2} checked={device2 === 1} />
-                <span className="slider"></span>
-              </label>
-            </div>}
-          </div>
-          <div className='thongso'>
-
-            <GaugeChart id="gauge-chart5"
-              animate={shouldRotate}
-              nrOfLevels={30}
-              arcsLength={[0.3, 0.5, 0.2]}
-              colors={['#EA4228', '#F5CD19', '#5BE12C']}
-              percent={oxy / 10}
-              formatTextValue={() => oxy}
-            />
-            <h2 className='title-thongso'>ĐỘ OXY (<span> ml/L</span>)</h2>
-            {thucong === 0 && <div className="action mobile">
-              <label className="button" htmlFor="toggle2">
-                <input id="toggle2" type="checkbox" onChange={handleDevice3} checked={device3 === 1} />
-                <span className="slider"></span>
-              </label>
-            </div>}
-
-          </div>
-          <div className='thongso'>
-
-            <GaugeChart id="gauge-chart5"
-              animate={shouldRotate}
-              nrOfLevels={420}
-              arcsLength={[0.4, 0.4, 0.2]}
-              colors={['#EA4228', '#F5CD19', '#5BE12C']}
-              percent={khoangcach / 300}
-              arcPadding={0.02}
-              formatTextValue={() => khoangcach}
-            />
-            <h2 className='title-thongso'>MỨC NƯỚC (<span> cm</span>)</h2>
-            {thucong === 0 && <div className="action mobile">
-              <label className="button" htmlFor="toggle3">
-                <input id="toggle3" type="checkbox" onChange={handleDevice4} checked={device4 === 1} />
-                <span className="slider"></span>
-              </label>
-            </div>}
-
-          </div>
-        </div>
-      </div>
-
-    </div>
+        </div>}
+    </>
   );
 }
 
