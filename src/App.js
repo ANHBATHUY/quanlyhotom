@@ -252,7 +252,7 @@ function App() {
                     </label>
                   </div>
                   <div className="action">
-                    <h2>Máy đo mực nước:</h2>
+                    <h2>Máy mực nước:</h2>
                     <label className="button" htmlFor="toggle3">
                       <input id="toggle3" type="checkbox" onChange={handleDevice4} checked={device4 === 1} />
                       <span className="slider"></span>
