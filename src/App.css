@@ -296,6 +296,9 @@ box-shadow:  5px 5px 10px #cccccc,
   left: 0;
   right: 0;
 }
+.text-group text{
+  fill: #fff;
+}
 @media only screen and (max-width: 767px) {
   /* CSS styles áp dụng cho màn hình có độ rộng tối đa 767px */
   
@@ -378,10 +381,20 @@ box-shadow:  5px 5px 10px #cccccc,
     justify-content: center;
     height: auto;
     padding-bottom: 10px;
+    background: #f0ecec;
+  }
+  .title-thongso {
+    color: rgb(122, 120, 120);
+  }
+  .text-group text{
+    fill: rgb(86, 82, 82);
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* CSS styles áp dụng cho màn hình có độ rộng từ 768px đến 1023px */
+  .text-group text{
+    fill: rgb(86, 82, 82);
+  }
   .not-internet img{
     width: 100%;
   }
@@ -458,7 +471,12 @@ box-shadow:  5px 5px 10px #cccccc,
     justify-content: center;
     height: auto;
     padding-bottom: 10px;
+    background: #f0ecec;
   }
+  .title-thongso {
+    color: rgb(122, 120, 120);
+  }
+  
 }
 @media only screen and (min-width: 1024px) {
   /* CSS styles áp dụng cho màn hình có độ rộng tối thiểu 1024px */

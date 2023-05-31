@@ -266,10 +266,11 @@ function App() {
               {/* ph */}
               <div className='thongso'>
                 <GaugeChart id="gauge-chart2"
+
                   animate={shouldRotate}
                   nrOfLevels={15}
                   percent={ph / 14}
-                  // textColor="red"
+                  textColor=''
                   needleColor="#BEBEBE"
                   // hideText
                   formatTextValue={() => ph}
@@ -286,9 +287,12 @@ function App() {
               <div className='thongso'>
 
                 <GaugeChart id="gauge-chart3"
+
                   animate={shouldRotate}
                   percent={nhietdo / 100}
                   formatTextValue={(value) => nhietdo}
+                  needleColor="#BEBEBE"
+                  textColor=''
                 />
                 <h2 className='title-thongso'>NHIỆT ĐỘ (<sup> &#176;</sup>C)</h2>
                 {thucong === 0 && <div className="action mobile">
@@ -301,11 +305,14 @@ function App() {
               <div className='thongso'>
 
                 <GaugeChart id="gauge-chart5"
+
                   animate={shouldRotate}
                   nrOfLevels={30}
                   arcsLength={[0.3, 0.5, 0.2]}
                   colors={['#EA4228', '#F5CD19', '#5BE12C']}
                   percent={oxy / 10}
+                  needleColor="#BEBEBE"
+                  textColor=''
                   formatTextValue={() => oxy}
                 />
                 <h2 className='title-thongso'>ĐỘ OXY (<span> ml/L</span>)</h2>
@@ -320,12 +327,15 @@ function App() {
               <div className='thongso'>
 
                 <GaugeChart id="gauge-chart5"
+
                   animate={shouldRotate}
                   nrOfLevels={420}
                   arcsLength={[0.4, 0.4, 0.2]}
                   colors={['#EA4228', '#F5CD19', '#5BE12C']}
                   percent={khoangcach / 300}
                   arcPadding={0.02}
+                  needleColor="#BEBEBE"
+                  textColor=''
                   formatTextValue={() => khoangcach}
                 />
                 <h2 className='title-thongso'>MỨC NƯỚC (<span> cm</span>)</h2>
