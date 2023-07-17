@@ -310,7 +310,7 @@ function App() {
                   nrOfLevels={30}
                   arcsLength={[0.3, 0.5, 0.2]}
                   colors={['#EA4228', '#F5CD19', '#5BE12C']}
-                  percent={oxy / 10}
+                  percent={oxy / 10000}
                   needleColor="#BEBEBE"
                   textColor=''
                   formatTextValue={() => oxy}
